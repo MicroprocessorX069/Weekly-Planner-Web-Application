@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <h1>This week's tasks.</h1>
+    <hr>
+    <br>
+    <ul class="list-unstyled">
+      {% for task,percentage in tasks %}
+      <!--
+          <li class="list-group-item" data-toggle="tooltip" title="This is a tooltip."><a href="/week/{{task.task_id}}">{{task.task_title}}  {{percentage}}</a></li>
+          <div class="glyphicon glyphicon-star" style="background-color: #eee;">{{task.task_title}}</div>
+          -->
+          <li>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card card-cascade">
+                    <div class="view view-cascade gradient-card-header blue-gradient"  style="height:{{percentage+20}}px">
+                      <h2 class="card-header-title mb-3 text-center" href="/week/{{task.task_id}}" style="color:white">{{percentage}} % complete.</h2>
+                    </div>
+                    <div class="card-body card-body-cascade text-center">
+                      <h5 class="card-text">{{task.task_title}}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+        </li>
+      {% endfor %}
+    </ul>
+
+{%endblock%}

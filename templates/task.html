@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <h1>This task's subtasks.</h1>
+    <td><a href="#" class="btn btn-default pull-right">Undo delete</a></td>
+    <ul class="list-group">
+      <form method="post">
+      {% for subtask in subtasks %}
+          <li class="list-group-item" data-toggle="tooltip" title="This is a tooltip.">
+              <input type="checkbox" id={{subtask.subtask_id}} name="subtask_checkbox" value={{subtask.subtask_id}}>
+              <label for="{{subtask.subtask_id}}">{{subtask.subtask_text}}</label>
+            <h5>{{subtask.subtask_date}}</h5>
+            <h6>{{subtask.subtask_status}}</h6>
+          </li>
+
+      {% endfor %}
+      <button type="submit" class="btn">Submit</button>
+        </form>
+    </ul>
+{%endblock%}
